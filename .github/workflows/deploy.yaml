@@ -81,8 +81,10 @@ jobs:
 
       - name: Invalidate CloudFront
         run: |
+          # Match on bucket name only: S3 website endpoints use 's3-website-REGION'
+          # in some regions but 's3-website.REGION' in others (e.g. ap-south-1)
           DISTRIBUTION_ID=$(aws cloudfront list-distributions \
-            --query "DistributionList.Items[?Origins.Items[?DomainName=='${{ steps.deploy_outputs.outputs.frontend_bucket }}.s3-website-${{ secrets.DEFAULT_AWS_REGION }}.amazonaws.com']].Id | [0]" \
+            --query "DistributionList.Items[?contains(Origins.Items[0].DomainName, '${{ steps.deploy_outputs.outputs.frontend_bucket }}')].Id | [0]" \
             --output text)
           
           if [ "$DISTRIBUTION_ID" != "None" ] && [ -n "$DISTRIBUTION_ID" ]; then
