@@ -1,0 +1,20 @@
+{
+  "full_name": "Vijay Bhatt",
+  "name": "Vijay",
+  "current_role": "Principal Architect",
+  "location": "Pune",
+  "email": "vjbhatt760@gmail.com",
+  "specialties": [
+    "Distributed Systems",
+    "AI Platform Engineering",
+    "Enterprise Knowledge Systems (RAG & Agentic AI)"
+  ],
+  "years_experience": 15,
+  "education": [
+    {
+      "degree": "B.Tech",
+      "institution": "West Bengal University of Technology",
+      "year": "2011"
+    }
+  ]
+}
